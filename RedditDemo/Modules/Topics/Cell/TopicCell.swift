@@ -8,7 +8,7 @@
 import UIKit
 
 class TopicCell: UITableViewCell {
-
+    
     @IBOutlet weak var title: UILabel!
     
     @IBOutlet weak var imageCell: LoadingImageView!
@@ -27,45 +27,34 @@ class TopicCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     public func show(data: ChildData) {
         
         if let imageUrl = data.thumbnail {
-            if verifyUrl(urlString: imageUrl) {
+            if MethodHelp.verifyUrl(urlString: imageUrl) {
                 imageCell.loadImage(from: imageUrl)
                 imageCellHeight.constant = 210
             }else {
                 imageCell.image = UIImage()
                 imageCellHeight.constant = 20
             }
-           
+            
         }
-        
         
         
         title.text = data.title
         
         author.text = data.author
-       
+        
         entryDate.text = String().timeAgoWillDisplay(data.created)
-
+        
         commetns.text = "Comments: \(data.num_comments?.roundedWithAbbreviations ?? "0")"
     }
-    
-    func verifyUrl (urlString: String?) -> Bool {
-       if let urlString = urlString {
-           if let url = NSURL(string: urlString) {
-               return UIApplication.shared.canOpenURL(url as URL)
-           }
-       }
-       return false
-   }
-    
 }
 

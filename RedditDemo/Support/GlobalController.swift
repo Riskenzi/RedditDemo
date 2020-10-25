@@ -48,11 +48,6 @@ class GlobalController: UIViewController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
-//        guard UIApplication.shared.applicationState == .inactive else {
-//            return
-//        }
-        
-        // For get current call "slef.traitCollection.userInterfaceStyle"
         setupAppearances()
     }
     

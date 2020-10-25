@@ -13,3 +13,15 @@ extension UINib {
     
     static public let idenXibTopicCell = "TopicCell"
 }
+
+extension UIStoryboard {
+    //MARK: - Storyboard
+    
+    static public let main = "Main"
+}
+
+extension UIViewController {
+    //MARK: - ViewController
+    
+    static public let fullScreenController = "fullScreenController"
+}

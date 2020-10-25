@@ -93,9 +93,10 @@ extension DataSourcePage : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cellData = data[indexPath.row].data {
-            print(cellData.thumbnail)
-            print(cellData.thumbnailWidth)
-            print(cellData.thumbnailHeight)
+            if MethodHelp.verifyUrl(urlString: cellData.thumbnail) {
+                guard let navigation = self.controller.navigationController else { return }
+                Navigation.navigateFullScreen(in: navigation,cellData.thumbnail)
+            }
         }
     }
     
@@ -120,3 +121,5 @@ extension DataSourcePage : DataSourcePageDelegate {
         self.reloadContainers()
     }
 }
+
+

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mOj-8x-Fbz">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZUg-Wx-5Qj">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -29,13 +29,61 @@
                             <constraint firstItem="ZUg-Wx-5Qj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vRY-mM-A95"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="zyN-mg-hfB"/>
                     <connections>
                         <outlet property="tableView" destination="ZUg-Wx-5Qj" id="aPb-R9-4Or"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-145" y="55"/>
+            <point key="canvasLocation" x="763.768115942029" y="54.910714285714285"/>
+        </scene>
+        <!--Full Screen Controller-->
+        <scene sceneID="7ty-Nu-InR">
+            <objects>
+                <viewController storyboardIdentifier="fullScreenController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XVE-4D-579" customClass="FullScreenController" customModule="RedditDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ve4-6P-jxi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rvc-ct-eOC" customClass="LoadingImageView" customModule="RedditDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SOH-iv-pjI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SOH-iv-pjI" firstAttribute="trailing" secondItem="rvc-ct-eOC" secondAttribute="trailing" id="2KC-Wv-w3c"/>
+                            <constraint firstItem="rvc-ct-eOC" firstAttribute="leading" secondItem="SOH-iv-pjI" secondAttribute="leading" id="KJz-jA-nmL"/>
+                            <constraint firstItem="rvc-ct-eOC" firstAttribute="top" secondItem="ve4-6P-jxi" secondAttribute="top" id="lDm-84-qbM"/>
+                            <constraint firstAttribute="bottom" secondItem="rvc-ct-eOC" secondAttribute="bottom" id="wey-pS-6YU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageScreen" destination="rvc-ct-eOC" id="lil-dB-7bN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e44-d1-clr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1752" y="65"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="azL-bk-dfV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mOj-8x-Fbz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xYB-uE-V3o">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0qC-BE-ypO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vk1-dR-hG1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-146.37681159420291" y="54.910714285714285"/>
         </scene>
     </scenes>
     <resources>
