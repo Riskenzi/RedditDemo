@@ -33,8 +33,6 @@ class DataSourcePage : NSObject {
         self.setupTable()
         self.setupRefresh()
         
-       
-        
         viewModel.featchTopics()
     }
     
@@ -67,24 +65,10 @@ class DataSourcePage : NSObject {
     
     private func reloadContainers() {
         DispatchQueue.main.async { [weak self] in
+            
             self?.controller.tableView?.reloadData()
-            self?.saveData()
         }
     }
-    
-    private func saveData() -> Void {
-        do{
-            let colorAsData = try NSKeyedArchiver.archivedData(withRootObject: data, requiringSecureCoding: true)
-            UserDefaults.standard.set(colorAsData, forKey: "myData")
-            UserDefaults.standard.synchronize()
-        }catch (let error){
-            #if DEBUG
-            print("Failed to convert [Child] to Data : \(error.localizedDescription)")
-            #endif
-        }
-    }
-    
-    
 }
 
 extension DataSourcePage : UITableViewDelegate,UITableViewDataSource {
@@ -100,9 +84,19 @@ extension DataSourcePage : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let  cell = self.controller?.tableView?.dequeueReusableCell(withIdentifier:UINib.idenXibTopicCell , for: indexPath) as! TopicCell
         if let cellData = data[indexPath.row].data {
-            cell.show(data: cellData)
+            
+                cell.show(data: cellData)
         }
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cellData = data[indexPath.row].data {
+            print(cellData.thumbnail)
+            print(cellData.thumbnailWidth)
+            print(cellData.thumbnailHeight)
+        }
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

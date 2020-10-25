@@ -11,7 +11,9 @@ class TopicCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
     
-    @IBOutlet weak var imageCell: UIImageView!
+    @IBOutlet weak var imageCell: LoadingImageView!
+    
+    @IBOutlet weak var imageCellHeight: NSLayoutConstraint!
     
     @IBOutlet weak var entryDate: UILabel!
     
@@ -33,9 +35,20 @@ class TopicCell: UITableViewCell {
     }
     
     public func show(data: ChildData) {
+        
         if let imageUrl = data.thumbnail {
-            imageCell.loadThumbnail(urlSting: imageUrl)
+            if verifyUrl(urlString: imageUrl) {
+                imageCell.loadImage(from: imageUrl)
+                imageCellHeight.constant = 210
+            }else {
+                imageCell.image = UIImage()
+                imageCellHeight.constant = 20
+            }
+           
         }
+        
+        
+        
         title.text = data.title
         
         author.text = data.author
@@ -45,4 +58,14 @@ class TopicCell: UITableViewCell {
         commetns.text = "Comments: \(data.num_comments?.roundedWithAbbreviations ?? "0")"
     }
     
+    func verifyUrl (urlString: String?) -> Bool {
+       if let urlString = urlString {
+           if let url = NSURL(string: urlString) {
+               return UIApplication.shared.canOpenURL(url as URL)
+           }
+       }
+       return false
+   }
+    
 }
+

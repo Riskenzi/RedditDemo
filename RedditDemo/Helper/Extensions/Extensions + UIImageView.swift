@@ -7,31 +7,33 @@
 
 import UIKit
 
-let imageCache = NSCache<AnyObject, AnyObject>()
+extension UIImage {
 
-extension UIImageView {
-    
-    func loadThumbnail(urlSting: String) {
-        guard let url = URL(string: urlSting) else { return }
-        image = nil
-        
-        if let imageFromCache = imageCache.object(forKey: urlSting as AnyObject) {
-            image = imageFromCache as? UIImage
-            return
+    /// Returns a image that fills in newSize
+
+   func resizedImage(newSize: CGSize) -> UIImage {
+
+      guard self.size != newSize else { return self }
+      UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+      self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+      let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+      UIGraphicsEndImageContext()
+      return newImage
+   }
+
+    /// Returns a resized image that fits in rectSize, keeping it's aspect ratio
+    /// Note that the new image size is not rectSize, but within it.
+    func resizedImageWithinRect(rectSize: CGSize) -> UIImage {
+        let widthFactor = size.width / rectSize.width
+        let heightFactor = size.height / rectSize.height
+
+        var resizeFactor = widthFactor
+        if size.height > size.width {
+            resizeFactor = heightFactor
         }
-        NetworkManager.downloadImage(url: url) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let data):
-                guard let imageToCache = UIImage(data: data) else { return }
-                imageCache.setObject(imageToCache, forKey: urlSting as AnyObject)
-                self.image = UIImage(data: data)
-            case .failure(_):
-                DispatchQueue.main.async {
-                    self.image = UIImage()
-                }
-                
-            }
-        }
+        let newSize = CGSize(width: size.width/resizeFactor, height: size.height/resizeFactor)
+        let resized = resizedImage(newSize: newSize)
+        return resized
     }
+
 }

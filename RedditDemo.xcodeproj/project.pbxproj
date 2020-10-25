@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		580B58FE25460ED000437EE9 /* LoadingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580B58FD25460ED000437EE9 /* LoadingImageView.swift */; };
 		587A0C5825440F42000B737A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587A0C5725440F42000B737A /* AppDelegate.swift */; };
 		587A0C5A25440F42000B737A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587A0C5925440F42000B737A /* SceneDelegate.swift */; };
 		587A0C5F25440F42000B737A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 587A0C5D25440F42000B737A /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		580B58FD25460ED000437EE9 /* LoadingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingImageView.swift; sourceTree = "<group>"; };
 		587A0C5425440F42000B737A /* RedditDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		587A0C5725440F42000B737A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		587A0C5925440F42000B737A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				587A0C84254437AA000B737A /* DataSourcePage.swift */,
 				587A0C8E25457B3A000B737A /* TopicViewModel.swift */,
 				587A0C8825443EFA000B737A /* Cell */,
+				580B58FD25460ED000437EE9 /* LoadingImageView.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				587A0C8B25443F6D000B737A /* TopicCell.swift in Sources */,
 				587A0CAB2545F30A000B737A /* Extensions + UITableView.swift in Sources */,
 				587A0C7E254434A5000B737A /* PageVC.swift in Sources */,
+				580B58FE25460ED000437EE9 /* LoadingImageView.swift in Sources */,
 				587A0C5825440F42000B737A /* AppDelegate.swift in Sources */,
 				587A0CAE2545F33A000B737A /* Extensions + UIImageView.swift in Sources */,
 				587A0C9225458192000B737A /* Extensions + Int.swift in Sources */,
@@ -401,6 +405,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WGLJTNM8P9;
 				INFOPLIST_FILE = RedditDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -420,6 +425,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WGLJTNM8P9;
 				INFOPLIST_FILE = RedditDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

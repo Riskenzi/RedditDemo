@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 extension String {
     func timeAgoWillDisplay(_ timestamp : Int?) -> String? {
         let time : TimeInterval = TimeInterval(timestamp ?? 0)
