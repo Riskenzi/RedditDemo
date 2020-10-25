@@ -93,10 +93,16 @@ extension DataSourcePage : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cellData = data[indexPath.row].data {
-            if MethodHelp.verifyUrl(urlString: cellData.thumbnail) {
-                guard let navigation = self.controller.navigationController else { return }
-                Navigation.navigateFullScreen(in: navigation,cellData.thumbnail)
-            }
+            cellData.preview?.images?.forEach({ (image) in
+                if let imageUrl = image.source?.url {
+                    if MethodHelp.verifyUrl(urlString: imageUrl) {
+                        var imageUrl = imageUrl.replacingOccurrences(of: "amp;", with: "", options: NSString.CompareOptions.literal, range: nil)
+                        imageUrl = imageUrl.replacingOccurrences(of: "amp;s", with: "s", options: NSString.CompareOptions.literal, range: nil)
+                        guard let navigation = self.controller.navigationController else { return }
+                        Navigation.navigateFullScreen(in: navigation,imageUrl)
+                    }
+                }
+            })
         }
     }
     

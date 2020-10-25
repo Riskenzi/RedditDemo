@@ -35,18 +35,21 @@ class TopicCell: UITableViewCell {
     }
     
     public func show(data: ChildData) {
-        
-        if let imageUrl = data.thumbnail {
-            if MethodHelp.verifyUrl(urlString: imageUrl) {
-                imageCell.loadImage(from: imageUrl)
-                imageCellHeight.constant = 210
-            }else {
-                imageCell.image = UIImage()
-                imageCellHeight.constant = 20
+                
+        data.preview?.images?.forEach({ (image) in
+            if let imageUrl = image.source?.url {
+                if MethodHelp.verifyUrl(urlString: imageUrl) {
+                    var imageUrl = imageUrl.replacingOccurrences(of: "amp;", with: "", options: NSString.CompareOptions.literal, range: nil)
+                    imageUrl = imageUrl.replacingOccurrences(of: "amp;s", with: "s", options: NSString.CompareOptions.literal, range: nil)
+                    
+                    imageCell.loadImage(from: imageUrl)
+                    imageCellHeight.constant = 260
+                }else {
+                    imageCell.image = UIImage()
+                    imageCellHeight.constant = 20
+                }
             }
-            
-        }
-        
+        })
         
         title.text = data.title
         
