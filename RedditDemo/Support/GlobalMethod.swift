@@ -18,6 +18,11 @@ class MethodHelp: NSObject {
         return false
     }
     
+    static func correctingImageURL(urlString: String) -> String {
+        var imageUrl = urlString.replacingOccurrences(of: "amp;", with: "", options: NSString.CompareOptions.literal, range: nil)
+        imageUrl = imageUrl.replacingOccurrences(of: "amp;s", with: "s", options: NSString.CompareOptions.literal, range: nil)
+        return imageUrl
+    }
     static func showAlertSingle(_ title: String, _ message: String? = nil) -> Void {
         
         guard let rootVC = Navigation.getRootViewController(),

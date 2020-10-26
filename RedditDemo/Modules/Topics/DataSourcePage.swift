@@ -96,10 +96,9 @@ extension DataSourcePage : UITableViewDelegate,UITableViewDataSource {
             cellData.preview?.images?.forEach({ (image) in
                 if let imageUrl = image.source?.url {
                     if MethodHelp.verifyUrl(urlString: imageUrl) {
-                        var imageUrl = imageUrl.replacingOccurrences(of: "amp;", with: "", options: NSString.CompareOptions.literal, range: nil)
-                        imageUrl = imageUrl.replacingOccurrences(of: "amp;s", with: "s", options: NSString.CompareOptions.literal, range: nil)
+                        let correctUrl = MethodHelp.correctingImageURL(urlString: imageUrl)
                         guard let navigation = self.controller.navigationController else { return }
-                        Navigation.navigateFullScreen(in: navigation,imageUrl)
+                        Navigation.navigateFullScreen(in: navigation,correctUrl)
                     }
                 }
             })

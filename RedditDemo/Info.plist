@@ -69,6 +69,11 @@
 	<string>Main</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Required to save the image</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>https</string>
+		<string>http</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
